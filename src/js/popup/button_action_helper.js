@@ -6,14 +6,14 @@ import { renderTimeEntries } from './render_helper';
 
 
 export const projectStartButtonOnClick = e => {
-  loading();  
+  loading();
 
   const projectButton = $(e.target);
   const projectID = projectButton.attr('name');
   const activityID = $(`#project-${projectID}-activity-selection`).val();
 
-  startProjectTimer(projectID, activityID, 
-    () => { 
+  startProjectTimer(projectID, activityID,
+    () => {
       loadAllTimeEntries(renderTimeEntries, showError);
     },
     showError
@@ -22,11 +22,18 @@ export const projectStartButtonOnClick = e => {
 }
 
 export const activityStopBtnOnClick = e => {
-  const activityID = $(e.target).attr('name');  
-  stopActivityTimer(activityID, 
-    () => { 
+  const activityID = $(e.target).attr('name');
+  stopActivityTimer(activityID,
+    () => {
       loadAllTimeEntries(renderTimeEntries, showError);
-    }, 
+    },
     showError);
   finishLoading();
+}
+
+export const projectCreateBtnOnClick = e => {
+  // function myFunction() {
+  //   document.getElementById("myCheck").click();
+  // }
+
 }

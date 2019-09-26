@@ -3,6 +3,8 @@ import { finishLoading } from './message_helpers';
 import { projectStartButtonOnClick, activityStopBtnOnClick } from './button_action_helper';
 import ongoingIcon from '../../img/kimai-icon-ongoing.png';
 import normalIcon from '../../img/kimai-icon.png';
+import { projectCreateBtnOnClick } from './button_action_helper';
+
 
 const renderTimeEntries = timeEntries => {
   let timeEntriesHTML = "<div class='day-group'>";
@@ -11,14 +13,14 @@ const renderTimeEntries = timeEntries => {
 
   timeEntries.forEach( (entry, index) => {
     const startTime = moment(entry.begin);
-    const endTime = entry.end ? moment(entry.end) : moment(); 
+    const endTime = entry.end ? moment(entry.end) : moment();
     const isOngoing = entry.end === null;
     const duration = moment.duration(endTime.diff(startTime));
-    
-    timeEntriesHTML += 
+
+    timeEntriesHTML +=
     `
       <li class="list-group-item ${isOngoing ? 'list-group-item-primary' : ''}">
-    
+
         <div class="time-entry-text">
           ${
             isOngoing ?
@@ -37,7 +39,7 @@ const renderTimeEntries = timeEntries => {
     totalTimeToDate += duration.asHours();
 
     if(nextEntry === undefined || !startTime.isSame(moment(nextEntry.begin), 'day')){
-      timeEntriesHTML += 
+      timeEntriesHTML +=
       `
           <li class="list-group-item list-group-item-secondary">
             Total: ${totalTimeToDate.toFixed(2)} h @ &nbsp <i>${startTime.format("ddd MMM Do")}</i>
@@ -54,7 +56,7 @@ const renderTimeEntries = timeEntries => {
       isTimerRunning = true;
     }
   });
-  
+
   timeEntriesHTML = `<ul class="list-group">${timeEntriesHTML}</ul>`
 
   $('#time-entries').html(timeEntriesHTML);
@@ -74,8 +76,8 @@ const renderProjectTimerButtons = projects => {
   projects.forEach(project => {
     const projectActivities = project.projectActivities;
 
-    projectButtonsHTML += 
-    ` 
+    projectButtonsHTML +=
+    `
       <div class="project-button-block card">
         <div class="title card-header">${project.name}</div>
         <div class="card-body">
@@ -95,6 +97,7 @@ const renderProjectTimerButtons = projects => {
 
   $('#project-buttons').html(projectButtonsHTML);
   $('.project-start-button').click(projectStartButtonOnClick);
+  $('.project-create-buttton').click(projectCreateBtnOnClick);
   finishLoading();
 }
 

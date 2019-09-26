@@ -106,10 +106,6 @@ $border-style: 1px solid $boarder-color;
   color: grey;
 }
 
+
+
 // Styles Boostrap
-#project-timer-row > div.col{
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  text-align: end !important;
-}
