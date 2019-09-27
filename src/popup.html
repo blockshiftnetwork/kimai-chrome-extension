@@ -3,6 +3,7 @@
 
 <head>
     <link rel='stylesheet' href='./css/styles.css' type='text/css' />
+    <meta charset="UTF-8"/>
 </head>
 
 <body>
@@ -10,11 +11,13 @@
 
     <div class="row" id="project-timer-row">
         <div class="col">
-            <button type="button" class="btn btn-secondary" >Crear Tarea</button>
+          <!-- <button type="button" class="btn btn-secondary" >Crear Tarea</button> -->
+            <button id="create_task" type="button" class="btn btn-secondary">Crear Tarea</button>
           </div>
       <div id="project-buttons" class="button-group"></div>
     </div>
 
+   <div style="display: none" class="form" id="form_create_task"> 
     <div class="form-group">
       <label style="font-weight: bold">Cliente</label>
         <select id="client" name="client" class="form-control">
@@ -51,13 +54,9 @@
     <div class="form-group">
       <label style="font-weight: bold">Actividad</label>
       <select id="activities" name="activities" required="required" class="form-control">
-        <option value=""></option><optgroup label="Macabi Swimwear">
-        <option value="27">Cambios en el Sitio Web</option>
-        <option value="29">colocar banners en home</option>
-        <option value="37">Crear banner para la seccion del home que contiene las frases (debajo de productos)</option>
-        <option value="36">Kevin: Banners de Sitio Web del Home (maximo 4)</option>
-        <option value="35">Kevin: Exportar Logo de Macabi para escritorio y movil</option></optgroup>
-        <option value="24">Actividad No Catalogada</option><option value="23">Reuniones</option>
+        required="required" class="form-control">
+        <option value=""></option><option value="24">Actividad No Catalogada</option>
+        <option value="23">Reuniones</option>
       </select>
     </div>
 
@@ -72,6 +71,7 @@
     <!-- <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Cerrar</button> -->
       <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal" style="background-color: #80808054;margin-left: .25rem;border-radius: 5px;border: 1px solid black;">Cerrar</button>
     </div>
+  </div>
 
     <div class="row" id="time-entries-row">
       <div class="col">
