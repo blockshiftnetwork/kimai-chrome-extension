@@ -2,75 +2,22 @@
 <html>
 
 <head>
-    <link rel='stylesheet' href='./css/styles.css' type='text/css' />
+    <meta charset="UTF-8"/>
 </head>
 
 <body>
   <div class="container">
 
+    <div class="col" style=" text-align: initial">
+      <button id="create_task" type="button" class="btn btn-secondary" style=" margin-top: 20px; ">Registro de Actividades</button>
+    </div>
+
+      <div class="col" style=" text-align: end">
+        <button id="create_task" type="button" class="btn btn-secondary" style=" margin-top: 20px; ">Crear Tarea</button>
+      </div>
+
     <div class="row" id="project-timer-row">
-        <div class="col">
-            <button type="button" class="btn btn-secondary" >Crear Tarea</button>
-          </div>
-      <div id="project-buttons" class="button-group"></div>
-    </div>
-
-    <div class="form-group">
-      <label style="font-weight: bold">Cliente</label>
-        <select id="client" name="client" class="form-control">
-          <option value=""></option>
-          <option value="6">Alfonzo Angulo</option>
-          <option value="1">Andrea Carmona</option>
-          <option value="5">Blockshift Network</option>
-          <option value="9">Fundaluzcol</option>
-          <option value="3">MarketingFino C.A</option>
-          <option value="7">SYACLLC C.A</option>
-          </select>
-    </div>
-
-    <div class="form-group">
-      <label style="font-weight: bold">Proyecto</label>
-        <select id="project" name="project" required="required" class="form-control">
-          <option value="" selected="selected"></option><optgroup label="Alfonzo Angulo">
-          <option value="12" data-customer="6">Recovery College</option></optgroup><optgroup label="Andrea Carmona">
-          <option value="1" data-customer="1">Macabi Swimwear</option></optgroup><optgroup label="Blockshift Network">
-          <option value="4" data-customer="5">Blockshift Hosting WHMCS</option>
-          <option value="6" data-customer="5">Trabajo y Persona</option></optgroup><optgroup label="Fundaluzcol">
-          <option value="10" data-customer="9">FundaluzCol</option></optgroup><optgroup label="MarketingFino C.A">
-          <option value="13" data-customer="3">Administración</option>
-          <option value="15" data-customer="3">Extension Chrome Kimai</option>
-          <option value="11" data-customer="3">InvoiceNinja</option>
-          <option value="17" data-customer="3">Kimai App Android</option>
-          <option value="7" data-customer="3">Marketing Fino Sitio Web</option>
-          <option value="16" data-customer="3">Sistema MKF</option></optgroup><optgroup label="SYACLLC C.A">
-          <option value="14" data-customer="7">Correos SYAC G Suite</option>
-          <option value="3" data-customer="7">SYAC Wordpress</option></optgroup>
-        </select>
-    </div>
-
-    <div class="form-group">
-      <label style="font-weight: bold">Actividad</label>
-      <select id="activities" name="activities" required="required" class="form-control">
-        <option value=""></option><optgroup label="Macabi Swimwear">
-        <option value="27">Cambios en el Sitio Web</option>
-        <option value="29">colocar banners en home</option>
-        <option value="37">Crear banner para la seccion del home que contiene las frases (debajo de productos)</option>
-        <option value="36">Kevin: Banners de Sitio Web del Home (maximo 4)</option>
-        <option value="35">Kevin: Exportar Logo de Macabi para escritorio y movil</option></optgroup>
-        <option value="24">Actividad No Catalogada</option><option value="23">Reuniones</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label style="font-weight: bold">Descripción</label>
-        <textarea id="description" name="description" class="form-control"></textarea>
-    </div>
-
-    <div class="modal-footer">
-    <!-- <button type="submit" class="btn btn-primary pull-left modal-form-save" data-loading-text="Guardar..." id="form_modal_save">Guardar</button> -->
-      <button type="submit" class="btn btn-primary pull-left modal-form-save" data-loading-text="Guardar..." id="form_modal_save" style="margin-right: 17rem;border-radius: 5px;">Guardar</button>
-    <!-- <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Cerrar</button> -->
-      <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal" style="background-color: #80808054;margin-left: .25rem;border-radius: 5px;border: 1px solid black;">Cerrar</button>
+      <div style="display: none" id="project-buttons" class="button-group"></div>
     </div>
 
     <div class="row" id="time-entries-row">
@@ -81,8 +28,8 @@
 
     <div class="col message-row">
       <p id="message"></p>
-      <div class="d-flex align-items-center" id="spinner">
-        Loading...
+        <div class="d-flex align-items-center" id="spinner">
+          Loading...
         <div class="spinner-border ml-auto spinner-border-sm" role="status" aria-hidden="true"></div>
       </div>
     </div>

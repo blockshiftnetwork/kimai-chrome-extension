@@ -3,7 +3,6 @@ import { finishLoading } from './message_helpers';
 import { projectStartButtonOnClick, activityStopBtnOnClick } from './button_action_helper';
 import ongoingIcon from '../../img/kimai-icon-ongoing.png';
 import normalIcon from '../../img/kimai-icon.png';
-import { projectCreateBtnOnClick } from './button_action_helper';
 
 
 const renderTimeEntries = timeEntries => {
@@ -75,13 +74,15 @@ const renderProjectTimerButtons = projects => {
 
   projects.forEach(project => {
     const projectActivities = project.projectActivities;
+    console.log(project)
 
     projectButtonsHTML +=
     `
       <div class="project-button-block card">
         <div class="title card-header">${project.name}</div>
-        <div class="card-body">
-          <select class="activity-selection" id="project-${project.id}-activity-selection">
+        <div class="card-body" style="display:none">
+        ${(projectActivities.length == 0) ? 'No hay actividades' : ''}
+          <select class="activity-selection" id="project-${project.id}-activity-selection" style="${(projectActivities.length == 0) ? 'display:none' : ''}">
             ${
               projectActivities &&
               projectActivities.map( (activity) => `
@@ -89,7 +90,7 @@ const renderProjectTimerButtons = projects => {
               `)
             }
           </select>
-          <button type="button" class="btn btn-outline-success btn-sm project-start-button" name="${project.id}">Start</button>
+          <button type="button" class="btn btn-outline-success btn-sm project-start-button" style="${(projectActivities.length == 0) ? 'display:none' : ''}" name="${project.id}">Start</button>
         </div>
       </div>
     `
@@ -97,7 +98,12 @@ const renderProjectTimerButtons = projects => {
 
   $('#project-buttons').html(projectButtonsHTML);
   $('.project-start-button').click(projectStartButtonOnClick);
-  $('.project-create-buttton').click(projectCreateBtnOnClick);
+
+  $('#project-buttons').on('click', '.card-header',function () {
+    console.log("sdfsf",  $(this).parent())
+     $(this).parent().find('.card-body').toggle();
+  });
+
   finishLoading();
 }
 

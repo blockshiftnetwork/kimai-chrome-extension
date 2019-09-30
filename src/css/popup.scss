@@ -60,7 +60,6 @@ $border-style: 1px solid $boarder-color;
   }
 
   .button-group {
-    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 
@@ -99,7 +98,7 @@ $border-style: 1px solid $boarder-color;
 }
 
 .row {
-  margin: 1em 0;
+  margin: 10px;
 }
 
 .project-button-block .title {
@@ -109,3 +108,11 @@ $border-style: 1px solid $boarder-color;
 
 
 // Styles Boostrap
+#project-timer-row .button-group{
+  display: block;
+  margin-top: 15px!important;
+}
+
+#project-timer-row {
+  display: block;
+}

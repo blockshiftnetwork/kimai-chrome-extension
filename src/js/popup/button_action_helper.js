@@ -30,10 +30,3 @@ export const activityStopBtnOnClick = e => {
     showError);
   finishLoading();
 }
-
-export const projectCreateBtnOnClick = e => {
-  // function myFunction() {
-  //   document.getElementById("myCheck").click();
-  // }
-
-}
