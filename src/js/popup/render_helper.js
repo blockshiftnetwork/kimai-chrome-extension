@@ -90,6 +90,7 @@ const renderProjectTimerButtons = projects => {
               `)
             }
           </select>
+          <textarea style="margin-top: 0px; margin-bottom: 0px; min-height: 100px; max-height: 150px;width: 95%; ${(projectActivities.length == 0) ? 'display:none' : ''}" placeholder="Descripcion ..."></textarea>
           <button type="button" class="btn btn-outline-success btn-sm project-start-button" style="${(projectActivities.length == 0) ? 'display:none' : ''}" name="${project.id}">Start</button>
         </div>
       </div>

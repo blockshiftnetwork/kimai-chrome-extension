@@ -5,7 +5,7 @@ $border-style: 1px solid $boarder-color;
 
 .container {
   width: 30em;
-  padding-bottom: 1em;
+  // padding-bottom: 1em;
 }
 
 /* Time Entries block */
@@ -115,4 +115,17 @@ $border-style: 1px solid $boarder-color;
 
 #project-timer-row {
   display: block;
+}
+
+//Boton de Crear Tarea
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #002e3f !important;
+  border-color: #002e3f !important;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #78bc61!important;
+  border-color: #78bc61!important;
 }

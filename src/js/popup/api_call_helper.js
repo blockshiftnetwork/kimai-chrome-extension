@@ -1,5 +1,5 @@
 const apiConfig = {
-  timeSheetSize: 20
+  timeSheetSize: 10
 };
 
 const getAjaxParams = (apiUrl, username, password) => {
@@ -117,12 +117,13 @@ export function startProjectTimer(projectID, activityID, successHandler, errorHa
 
       $.ajax({
         ...ajaxParams,
-        url: `${ajaxParams.rootUrl}/api/timesheets/`,
+        url: `${ajaxParams.rootUrl}/api/timesheets`,
         type: 'POST',
         data: {
           "begin": getCurrentTimeInString(),
           "project": projectID,
-          "activity": activityID
+          "activity": activityID,
+          "description": ""
         },
         success: successHandler,
         error: errorHandler
