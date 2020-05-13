@@ -1,9 +1,14 @@
+@import url("./fonts.scss");
+@import "~bootstrap/scss/bootstrap";
+
 .config-container {
   width: 20em;
   margin: auto;
   display: flex;
+  padding: 0 1;
   flex-direction: column;
   align-items: center;
+  padding: 0 10px  10px;
 }
 
 .row {
@@ -15,8 +20,32 @@
 }
 
 #save-button {
+  color: #ffffff;
   margin-top: 1em;
-  width: 20em;
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #28a745;
+  font-family: 'montserrat-semibold', sans-serif ;
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
+.input-content {
+  font-family: 'montserrat-light', sans-serif;
+  // height: 30px;
+  // border-color: #eee;
+  // border-radius: 5px;
+  margin-top: 10px;
+  // padding-left: 5px;
+}
 
+.label-input {
+  font-family: 'montserrat-semibold', sans-serif;
+}
+
+#message {
+  font-family: "montserrat-light";
+    margin-top: 20px;
+}

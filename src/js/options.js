@@ -1,7 +1,9 @@
+import 'bootstrap';
 import "../css/options.scss";
 import { pingWithCredentials } from './popup/api_call_helper';
 
 function constructOptions() {
+  var loaddin = false;
   let button = $('#save-button');
 
   // Populate existing info
@@ -17,7 +19,7 @@ function constructOptions() {
     const apiUsername = $('#api-username-input').val();
     const apiPassword = $('#api-password-input').val();
     $('#message').text("");
-
+    showSpinner(true);
     pingWithCredentials(
       apiRootUrl, apiUsername, apiPassword,
       () =>{
@@ -27,12 +29,27 @@ function constructOptions() {
           apiRootUrl: apiRootUrl
         }, () => {
           $('#message').text("API information is saved.");
+          showSpinner(false);
         });
       },
       () => {
         $('#message').text("API endpoint or credential is invalid");
+        showSpinner(false);
       }
     )
   });
+
+  function showSpinner(show) {
+    if(show){
+      $('#spinner').removeClass('d-none');
+      $('#loading').removeClass('d-none');
+      $('#text-btn').addClass('d-none');
+    }else{
+      $('#spinner').addClass('d-none');
+      $('#loading').addClass('d-none');
+      $('#text-btn').removeClass('d-none');
+    }
+    
+  }
 }
 constructOptions();

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { finishLoading } from './message_helpers';
-import { projectStartButtonOnClick, activityStopBtnOnClick } from './button_action_helper';
+import { projectStartButtonOnClick, activityStopBtnOnClick, activityRestartBtnOnClick } from './button_action_helper';
 import ongoingIcon from '../../img/kimai-icon-ongoing.png';
 import normalIcon from '../../img/kimai-icon.png';
 
@@ -27,9 +27,11 @@ const renderTimeEntries = timeEntries => {
             :
               `${duration.asHours().toFixed(2)} h`
           }
-          @ <b><span class="project">${entry.projectName}</span></b>
+          @ <b><span class="project text-truncate">${entry.projectName}</span></b>
         </div>
-        ${ isOngoing ? `<button class="btn btn-outline-secondary btn-sm activity-stop-button" name="${entry.id}">Stop</button>`: "" }
+        ${ isOngoing ? 
+          `<button class="btn btn-outline-secondary btn-sm activity-stop-button w-25" name="${entry.id}">Stop</button>`
+          : `<button class="btn btn-outline-secondary btn-sm activity-restart-button w-25" name="${entry.id}">Restart</button>` }
       </li>
     `;
 
@@ -60,6 +62,7 @@ const renderTimeEntries = timeEntries => {
 
   $('#time-entries').html(timeEntriesHTML);
   $('.activity-stop-button').click(activityStopBtnOnClick);
+  $('.activity-restart-button').click(activityRestartBtnOnClick);
   finishLoading();
 
   if(isTimerRunning){
@@ -82,7 +85,7 @@ const renderProjectTimerButtons = projects => {
         <div class="title card-header">${project.name}</div>
         <div class="card-body" style="display:none">
         ${(projectActivities.length == 0) ? 'No hay actividades' : ''}
-          <select class="activity-selection" id="project-${project.id}-activity-selection" style="${(projectActivities.length == 0) ? 'display:none' : ''}">
+          <select class="activity-selection form-control" id="project-${project.id}-activity-selection" style="${(projectActivities.length == 0) ? 'display:none' : ''}">
             ${
               projectActivities &&
               projectActivities.map( (activity) => `
@@ -90,8 +93,8 @@ const renderProjectTimerButtons = projects => {
               `)
             }
           </select>
-          <textarea style="margin-top: 0px; margin-bottom: 0px; min-height: 100px; max-height: 150px;width: 95%; ${(projectActivities.length == 0) ? 'display:none' : ''}" placeholder="Descripcion ..."></textarea>
-          <button type="button" class="btn btn-outline-success btn-sm project-start-button" style="${(projectActivities.length == 0) ? 'display:none' : ''}" name="${project.id}">Start</button>
+          <textarea class="form-control" style="margin-top: 0px; margin-bottom: 0px; min-height: 100px; max-height: 150px;width: 95%; ${(projectActivities.length == 0) ? 'display:none' : ''}" placeholder="Descripcion ..."></textarea>
+          <button type="button" class="btn btn-outline-success btn-sm project-start-button mt-3 w-25" style="${(projectActivities.length == 0) ? 'display:none' : ''}" name="${project.id}">Start</button>
         </div>
       </div>
     `

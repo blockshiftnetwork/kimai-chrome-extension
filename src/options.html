@@ -8,22 +8,27 @@
   <div class="config-container">
 
     <div class="row">
-      <span> Kimai endpoint: <br> <i>(e.g. https://kimai.example.ca )</i> </span>
-      <input type="text" id="endpoint" value="https://kimai.blockshift.co">
+      <span class="label-input"> Kimai endpoint: <br> <i>(e.g. https://kimai.example.ca )</i> </span>
+      <input class="input-content form-control" type="text" id="endpoint" value="https://kimai.blockshift.co">
     </div>
 
     <div class="row">
-      <span> API Username: </span>
-      <input type="text" id="api-username-input">
+      <span class="label-input"> API Username: </span>
+      <input class="input-content form-control" type="text" id="api-username-input">
     </div>
 
     <div class="row">
-      <span> API Password: </span>
-      <input type="password" id="api-password-input">
+      <span class="label-input"> API Password: </span>
+      <input class="input-content form-control" type="password" id="api-password-input">
     </div>
-
-    <button id="save-button">Test and Save</button>
+    <button id="save-button" class="btn btn-primary py-1" type="button">
+      <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+      <span id="loading" class="d-none">Loading...</span>
+     <span id="text-btn">Test and Save</span> 
+    </button>
+    <!-- <button  id="save-button">Test and Save</button> -->
     <p id="message"></p>
+
   </div>
 </body>
 

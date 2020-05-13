@@ -1,8 +1,13 @@
+@import url("./fonts.scss");
 @import "~bootstrap/scss/bootstrap";
+
 $boarder-color: rgba(0, 0, 0, 0.125);
 $border-radius: 0.25em;
 $border-style: 1px solid $boarder-color;
 
+body {
+  font-family: 'montserrat-semibold', sans-serif ;
+}
 .container {
   width: 30em;
   // padding-bottom: 1em;

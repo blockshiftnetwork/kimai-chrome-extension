@@ -152,6 +152,27 @@ export function stopActivityTimer(timeSheetID, successHandler, errorHandler){
   );
 }
 
+export function restartActivityTimer(timeSheetID, successHandler, errorHandler){
+  loading();
+  getAPICredential(
+    (url, username, password) => {
+      const ajaxParams = getAjaxParams(url, username, password);
+
+      $.ajax({
+        ...ajaxParams,
+        url: `${ajaxParams.rootUrl}/api/timesheets/${timeSheetID}/restart`,
+        type: 'PATCH',
+        data: {
+          "copy": "all"
+        },
+        success: successHandler,
+        error: errorHandler
+      });
+    }
+  );
+}
+
+
 export function pingWithCredentials(endpoint, username, password, successHandler, errorHandler){
   const ajaxParams = getAjaxParams(endpoint, username, password);
 
