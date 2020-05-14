@@ -16,7 +16,7 @@ before_script:
   - curl -O -L https://github.com/s3tools/s3cmd/releases/download/v2.1.0/s3cmd-2.1.0.tar.gz
   - tar xzf s3cmd-2.1.0.tar.gz
   - cd s3cmd-2.1.0
-  - cp -R s3cmd S3 ~/bin
+  - sudo cp -R s3cmd S3 /usr/bin
   - export PATH=$HOME/bin:$PATH
   - . ~/.bash_profile
   - s3cmd
