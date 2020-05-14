@@ -109,6 +109,23 @@ export function loadAllProjectsAndActivities(successHandler, errorHandler){
   );
 }
 
+export function loadDataForSelects(successHandler, errorHandler){
+  getAPICredential(
+    (url, username, password) => {
+      const ajaxParams = getAjaxParams(url, username, password);
+      $.when(
+        $.ajax({url: `${ajaxParams.rootUrl}/api/projects?order=ASC&orderBy=id`, ...ajaxParams}),
+        $.ajax({url: `${ajaxParams.rootUrl}/api/activities`, ...ajaxParams})
+      ).done( (projects, activities) => {
+        projects = projects[0];
+        activities = activities[0];
+        successHandler(projects, activities);
+      }).fail(errorHandler);
+    }
+  );
+}
+
+
 export function startProjectTimer(projectID, activityID, successHandler, errorHandler){
   loading();
   getAPICredential(
@@ -125,6 +142,24 @@ export function startProjectTimer(projectID, activityID, successHandler, errorHa
           "activity": activityID,
           "description": ""
         },
+        success: successHandler,
+        error: errorHandler
+      });
+    }
+  );
+}
+
+export function updateProjectTimer(id, data, successHandler, errorHandler){
+  loading();
+  getAPICredential(
+    (url, username, password) => {
+      const ajaxParams = getAjaxParams(url, username, password);
+
+      $.ajax({
+        ...ajaxParams,
+        url: `${ajaxParams.rootUrl}/api/timesheets/${id}`,
+        type: 'PATCH',
+        data: data,
         success: successHandler,
         error: errorHandler
       });
