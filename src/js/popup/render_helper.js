@@ -1,8 +1,12 @@
 import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
 import { finishLoading } from './message_helpers';
 import { projectStartButtonOnClick, activityStopBtnOnClick, activityRestartBtnOnClick } from './button_action_helper';
 import ongoingIcon from '../../img/kimai-icon-ongoing.png';
 import normalIcon from '../../img/kimai-icon.png';
+
+momentDurationFormatSetup(moment);
+
 
 
 const renderTimeEntries = timeEntries => {
@@ -10,11 +14,25 @@ const renderTimeEntries = timeEntries => {
   let totalTimeToDate = 0;
   let isTimerRunning = false;
 
+  var formatDuration = (n) => {
+    let n3 = '00:00';
+    if (n < 3600) {
+        n3 = '00:' + moment.duration(n, 'seconds').format('hh:mm');
+  
+    } else {
+        n3 = moment.duration(n, 'seconds').format('hh:mm');
+  
+    }
+    return n3
+  };
+
   timeEntries.forEach( (entry, index) => {
     const startTime = moment(entry.begin);
     const endTime = entry.end ? moment(entry.end) : moment();
     const isOngoing = entry.end === null;
     const duration = moment.duration(endTime.diff(startTime));
+
+    
 
     timeEntriesHTML +=
     `
@@ -25,7 +43,7 @@ const renderTimeEntries = timeEntries => {
             isOngoing ?
               `<span class="start">${startTime.format("h:mm a")}</span>`
             :
-              `${duration.asHours().toFixed(2)} h`
+              `${ formatDuration(duration / 1000)} h`
           }
           @ <b><span class="project text-truncate">${entry.projectName}</span></b>
         </div>
@@ -37,13 +55,13 @@ const renderTimeEntries = timeEntries => {
 
     // Daily hours summary
     const nextEntry = timeEntries[index + 1];
-    totalTimeToDate += duration.asHours();
+    totalTimeToDate += duration;
 
     if(nextEntry === undefined || !startTime.isSame(moment(nextEntry.begin), 'day')){
       timeEntriesHTML +=
       `
           <li class="list-group-item list-group-item-secondary">
-            Total: ${totalTimeToDate.toFixed(2)} h @ &nbsp <i>${startTime.format("ddd MMM Do")}</i>
+            Total: ${ formatDuration(totalTimeToDate / 1000)} h @ &nbsp <i>${startTime.format("ddd MMM Do")}</i>
           </li>
         </div>
         <div class='day-group'>
